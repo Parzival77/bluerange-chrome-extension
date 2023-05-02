@@ -1,0 +1,77 @@
+body {
+    width: 300px;
+    margin: 0;
+    /*background: #004982;*/
+    background: #F7F6F6;
+    font-family: 'open sans', 'sans-serif';
+}
+
+body h1 {
+    margin-left: 10px;
+}
+
+.material-icons {
+    color: #004982;
+    font-size: 1.5em;
+    display: flex;
+    margin-top: 5px;
+}
+
+.container {
+
+}
+
+.container h2 {
+    text-transform: uppercase;
+    color: #777776;
+    font-size: 15px;
+
+    margin: 10px;
+    line-height: 40px;
+}
+
+.container .content {
+    margin: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccccc8;
+    background: white;
+    padding: 8px;
+}
+
+.links .content p {
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    border-radius: 2px;
+    cursor: pointer;
+    line-height: 30px;
+    padding-left: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.links .content p:last-child {
+    margin-bottom: 0;
+}
+
+.links .content p a {
+    text-decoration: none;
+    color: black;
+}
+
+#no-blueRange i{
+    margin: 30px auto;
+    width: fit-content;
+    font-size: 3em;
+}
+#no-blueRange div{
+    margin: 0px 30px 30px;
+    color: #777776;
+    text-align: center;
+}
+
+
+
+
+
+
