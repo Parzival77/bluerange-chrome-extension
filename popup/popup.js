@@ -1,21 +1,32 @@
 var urls = [];
-var isBlueRange = false;
-var isDevMode = false;
-var servers = [
+const servers = [
     { key: 'local', url: 'https://localhost:4200' },
     { key: 'alpha', url: 'https://alpha.bluerange.io' },
     { key: 'beta', url: 'https://beta.bluerange.io' }
 ]
 
-chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
-    isBlueRange = !!tabs[0].url.match(/https:\/\/.*\.bluerange/g)
+chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
+    const tab = tabs[0]
 
-    if (isBlueRange === true) {
-        document.getElementById('no-blueRange').remove()
+    if (!!tab.url.match(/https:\/\/.*\.bluerange/g)) {
+        document.getElementById('no-blueRange').remove();
+
+        // LINK THIS PAGE
         servers.forEach((server, index) => {
             urls[index] = tabs[0].url.replaceAll(/https:\/\/.*\.bluerange\.io/g, server.url);
             document.getElementById(server.key).setAttribute('href', urls[index]);
         })
+
+        // DEV MODE
+        const response = await chrome.scripting.executeScript({
+            target: { tabId: tab.id, allFrames: true },
+            func: readLocalStorage,
+            args: ['devMode'],
+        })
+
+        const isDevMode = response[0]?.result === 'true'
+
+
     } else {
         document.getElementById('main-content').remove()
     }
@@ -39,5 +50,6 @@ function copyMarkDown(index) {
     navigator.clipboard.writeText(`[BlueRange-Portal](${ this.urls[index] })`).then(_ => window.close())
 }
 
-
-// =============== DEVELOPMENT MODE ===============
+function readLocalStorage(key) {
+    return localStorage.getItem(key)
+}
