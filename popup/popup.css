@@ -21,12 +21,30 @@ body h1 {
     display: flex;
 }
 
-.space-between{
+.space-between {
     justify-content: space-between;
 }
 
-.text-line{
+.text-line {
     line-height: 30px;
+}
+
+#logo-standalone {
+    position: absolute;
+    height: 50px;
+    margin: 8px;
+}
+
+#header-banner {
+    height: 62px;
+}
+
+h1 {
+    position: absolute;
+    top: -9px;
+    left: 59px;
+    font-size: 2.5em;
+    color: white;
 }
 
 .container h2 {
@@ -69,12 +87,13 @@ body h1 {
     color: black;
 }
 
-#no-blueRange i{
+#no-blueRange i {
     margin: 30px auto;
     width: fit-content;
     font-size: 3em;
 }
-#no-blueRange div{
+
+#no-blueRange div {
     margin: 0px 30px 30px;
     color: #777776;
     text-align: center;
@@ -83,7 +102,7 @@ body h1 {
 
 /** SWITCH **/
 .toggle {
-    margin:4px 0 0 10px;
+    margin: 4px 0 0 10px;
     position: relative;
     display: inline-block;
     width: 3rem;
@@ -125,7 +144,7 @@ input:checked + .roundbutton {
     background-color: #14c700;
 }
 
-input:checked + .roundbutton:before  {
+input:checked + .roundbutton:before {
     transform: translate(1.4rem, 0);
 }
 

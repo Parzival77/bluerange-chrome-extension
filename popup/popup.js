@@ -8,9 +8,6 @@ const servers = [
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
     const tab = tabs[0]
 
-    if (!!tab.url.match(/https:\/\/.*\.bluerange/g)) {
-        document.getElementById('no-blueRange').remove();
-
         // LINK THIS PAGE
         servers.forEach((server, index) => {
             urls[index] = tabs[0].url.replaceAll(/https:\/\/.*\.bluerange\.io/g, server.url);
@@ -34,9 +31,6 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
             })
             chrome.tabs.reload();
         });
-    } else {
-        document.getElementById('main-content').remove()
-    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
