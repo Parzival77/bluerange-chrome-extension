@@ -8,29 +8,29 @@ const servers = [
 chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
     const tab = tabs[0]
 
-        // LINK THIS PAGE
-        servers.forEach((server, index) => {
-            urls[index] = tabs[0].url.replaceAll(/https:\/\/.*\.bluerange\.io/g, server.url);
-            document.getElementById(server.key).setAttribute('href', urls[index]);
-        })
+    // LINK THIS PAGE
+    servers.forEach((server, index) => {
+        urls[index] = tabs[0].url.replaceAll(/https:\/\/.*\.bluerange\.io/g, server.url);
+        document.getElementById(server.key).setAttribute('href', urls[index]);
+    })
 
-        // DEV MODE
+    // DEV MODE
+    const response = await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        func: readLocalStorage,
+        args: ['devMode'],
+    })
+
+    const isDevMode = response[0]?.result === 'true'
+    document.getElementById('toggleswitch').checked = isDevMode
+    document.getElementById('toggleswitch').addEventListener('change', async () => {
         const response = await chrome.scripting.executeScript({
             target: { tabId: tab.id, allFrames: true },
-            func: readLocalStorage,
-            args: ['devMode'],
+            func: writeLocalStorage,
+            args: ['devMode', !isDevMode],
         })
-
-        const isDevMode = response[0]?.result === 'true'
-        document.getElementById('toggleswitch').checked = isDevMode
-        document.getElementById('toggleswitch').addEventListener('change', async () => {
-            const response = await chrome.scripting.executeScript({
-                target: { tabId: tab.id, allFrames: true },
-                func: writeLocalStorage,
-                args: ['devMode', !isDevMode],
-            })
-            chrome.tabs.reload();
-        });
+        chrome.tabs.reload();
+    });
 });
 
 document.addEventListener('DOMContentLoaded', () => {

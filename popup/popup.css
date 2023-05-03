@@ -29,21 +29,25 @@ body h1 {
     line-height: 30px;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 #logo-standalone {
     position: absolute;
-    height: 50px;
+    height: 38px;
     margin: 8px;
 }
 
 #header-banner {
-    height: 62px;
+    height: 54px;
 }
 
 h1 {
     position: absolute;
     top: -9px;
-    left: 59px;
-    font-size: 2.5em;
+    left: 48px;
+    font-size: 2.2em;
     color: white;
 }
 
@@ -51,8 +55,6 @@ h1 {
     text-transform: uppercase;
     color: #777776;
     font-size: 15px;
-
-    margin-top: 24px;
     margin-left: 10px;
     margin-bottom: 0;
     line-height: 30px;
@@ -68,12 +70,10 @@ h1 {
 
 .links .content p {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color: black;
     border-radius: 2px;
-    cursor: pointer;
     line-height: 30px;
-    padding-left: 10px;
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -84,6 +84,7 @@ h1 {
 
 .links .content p a {
     text-decoration: none;
+    cursor: pointer;
     color: black;
 }
 
