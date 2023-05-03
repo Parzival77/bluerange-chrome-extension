@@ -1,6 +1,6 @@
 {
   "name": "BlueRange Extension",
-  "version": "1.0",
+  "version": "0.1",
   "manifest_version": 3,
   "action": {
     "default_popup": "./popup/popup.html"
@@ -14,9 +14,6 @@
     "32": "./icon/icon32.png",
     "48": "./icon/icon48.png",
     "128": "./icon/icon128.png"
-  },
-  "background": {
-    "service_worker": "background.js"
   },
   "host_permissions": [
     "https://*/*"

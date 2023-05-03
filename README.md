@@ -1,15 +1,11 @@
 
-# Orange It Up
-This project is developed by [enisfr](https://github.com/enisfr)
+# BlueRange Portal Chrome Extension
+Das ist eine Chrome Erweiterung, die Entwickler des BlueRange Portals unterstützen soll
 
-This is a TypeScript Chrome Extension that allows user to manipulate the background of the web page.
+## Development
+- Go to the Extensions page by entering [chrome://extensions](chrome://extensions) in a new tab 
+- Enable Developer Mode by clicking the toggle switch next to Developer mode
+- Click the Load unpacked button and select the extension directory
+- Select the root of this project
 
-# Stack
-
- - TypeScript
- - Webpack
-
-## Guide
-
-See my detailed explanation on creating chrome extesions with TypeScript on [Medium](https://enisfr.medium.com/creating-chrome-extensions-with-typescript-914873467b65#9f32-5ed6c8b8e388).
-# bluerange-chrome-extension
+Reference: https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked
