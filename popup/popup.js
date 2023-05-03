@@ -25,14 +25,21 @@ chrome.tabs.query({ active: true, lastFocusedWindow: true }, async tabs => {
         })
 
         const isDevMode = response[0]?.result === 'true'
-
-
+        document.getElementById('toggleswitch').checked = isDevMode
+        document.getElementById('toggleswitch').addEventListener('change', async () => {
+            const response = await chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames: true },
+                func: writeLocalStorage,
+                args: ['devMode', !isDevMode],
+            })
+            chrome.tabs.reload();
+        });
     } else {
         document.getElementById('main-content').remove()
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     servers.forEach((server, index) => {
         document.getElementById('copy-' + server.key)?.addEventListener('click', () => copyUrl(index));
     })
@@ -52,4 +59,8 @@ function copyMarkDown(index) {
 
 function readLocalStorage(key) {
     return localStorage.getItem(key)
+}
+
+function writeLocalStorage(key, value) {
+    return localStorage.setItem(key, value)
 }
